@@ -1,0 +1,212 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* noto-sans-kr-100 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/noto-sans-kr-v36-korean-100.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-200 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/noto-sans-kr-v36-korean-200.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-300 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/noto-sans-kr-v36-korean-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-regular - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/noto-sans-kr-v36-korean-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-500 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/noto-sans-kr-v36-korean-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-600 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/noto-sans-kr-v36-korean-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-700 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/noto-sans-kr-v36-korean-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-800 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/noto-sans-kr-v36-korean-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* noto-sans-kr-900 - korean */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/noto-sans-kr-v36-korean-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 1;
+  word-break: keep-all;
+}
+
+:root {
+  --gutter-size: 3.75rem;
+  --gutter-size-small: 2.5rem;
+}
+@media (max-width: 1024px) {
+  :root {
+    --gutter-size: 40px;
+    --gutter-size-small: 20px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --gutter-size: 20px;
+    --gutter-size-small: 10px;
+  }
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+  .pc-only {
+    display: none !important;
+  }
+}
+
+.tb-show {
+  display: none !important;
+}
+@media (max-width: 1024px) {
+  .tb-show {
+    display: block !important;
+  }
+}
+
+.mo-only {
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .mo-only {
+    display: block !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  white-space: nowrap;
+}
+
+.scroll-lock {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
