@@ -8,24 +8,23 @@ html{
 }
 
 body {
-    font-family: "Noto Sans KR", sans-serif;
-    line-height: 1;
+    font-family: "Roboto", "Noto Sans KR", sans-serif;
+    line-height: 1.6;
+    letter-spacing: -0.025em;
     word-break: keep-all;
+    color: $color-white;
+    background-color: $color-black;
 }
 
 :root{
     --gutter-size: 3.75rem;
-    --gutter-size-small: 2.5rem;
 
     @include tablet {
         --gutter-size: 40px;
-        --gutter-size-small: 20px;
     }
     @include mobile {
         --gutter-size: 20px;
-        --gutter-size-small: 10px;
     }
-
 }
 
 html::-webkit-scrollbar {
@@ -71,4 +70,16 @@ html::-webkit-scrollbar-thumb {
     min-height: 100%;
     overflow:hidden;
     touch-action:none;
+}
+
+.font-serif {
+    font-family: 'HappyTime';
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-600 {
+    font-weight: 600;
 }

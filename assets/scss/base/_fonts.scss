@@ -1,80 +1,10 @@
-/* noto-sans-kr-100 - korean */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* font-family: 'Roboto', sans-serif; */
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+/* Happy Time */
 @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 100;
-    src: url('../fonts/noto-sans-kr-v36-korean-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-200 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 200;
-    src: url('../fonts/noto-sans-kr-v36-korean-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-300 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 300;
-    src: url('../fonts/noto-sans-kr-v36-korean-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-regular - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/noto-sans-kr-v36-korean-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-500 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../fonts/noto-sans-kr-v36-korean-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-600 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 600;
-    src: url('../fonts/noto-sans-kr-v36-korean-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-700 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/noto-sans-kr-v36-korean-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-
-  /* noto-sans-kr-800 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 800;
-    src: url('../fonts/noto-sans-kr-v36-korean-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  
-  /* noto-sans-kr-900 - korean */
-  @font-face {
-    font-display: swap;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 900;
-    src: url('../fonts/noto-sans-kr-v36-korean-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
+  font-family: 'HappyTime';
+  font-weight: normal;
+  src: url('../fonts/HappyTime.woff') format('woff');
+}

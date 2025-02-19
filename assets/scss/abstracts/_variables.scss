@@ -5,9 +5,15 @@ $mobile: 767px;
 $mobile480: 480px;
 
 // Color
-$color-white:#fff;
-$color-black:#000;
-$color-primary: rgb(0, 204, 255) 100%;
+$color-white: #fff;
+$color-black: #000;
+$color-primary: rgba(0, 204, 255, 1);
+$color-navy: #061020;
+
+// Font
+$font-ko: "Noto Sans KR", sans-serif;
+$font-en: "Roboto", sans-serif;
+$font-serif: "HappyTime", serif;
 
 // Vendor Prefix
 $set-prefix: '-moz-', '-webkit-', '';

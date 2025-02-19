@@ -36,15 +36,38 @@
   }
 }
 
-// flex
-@mixin flex($justify, $align) {
-  display: -webkit-box;
-  display: -ms-flexbox;
+
+@mixin circleBtn($width: 136px) {
   display: flex;
-  -webkit-box-pack: $justify;
-     -ms-flex-pack: $justify;
-   justify-content: $justify;
-  -webkit-box-align: $align;
-     -ms-flex-align: $align;
-        align-items: $align;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: bounce infinite 3s ease-in-out;
+  max-width: $width;
+  max-height: $width;
+  filter: grayscale(100%) brightness(400%);
+  transition: all 0.5s;
+
+  @include laptop {
+      right: 5vw;
+  }
+
+  &:hover {
+      filter: grayscale(0) brightness(100%);
+  }
+
+  span{
+      position: absolute;
+      line-height: 1.3;
+      padding: 5px 30% 0;
+      font-size: 1.13rem;
+      color: $color-primary;
+  }
+
+  img {
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      animation: rotate 6s infinite linear;
+  }
 }
