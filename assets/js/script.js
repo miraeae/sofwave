@@ -1,27 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Disable scrolling until the intro ends
+    lenis.stop();
 
     gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
-    header();
+    introTl.play();
 
-    hero();
-    introduce();
-    promotion();
-    contact();
-    media();
-    sns();
-
-    footer();
-
+    layout();
+    secIntroduce();
+    section();
 });
 
 
-////////// 0-1. Intro
 
-
-
-
-////////// 0-2. Common
 // 부드럽게 스크롤
 const lenis = new Lenis()
 
@@ -34,39 +25,32 @@ gsap.ticker.add((time)=>{
 gsap.ticker.lagSmoothing(0)
 
 
-// Header
-function header() {
-    const gnbItem = gsap.utils.toArray(".gnb__list > li > a");
 
-    $(gnbItem).each(function (i, item) {
-        var gnbTl = new gsap.timeline({ paused: true, reversed: true });
-        gnbTl
-        .to(gnbItem[i], { duration: 0.5, text: gnbItem[i].getAttribute('data-text')}, 0);
+////////// 0. Intro
+const introTl = gsap.timeline({paused: true, default: {ease: "power4.out"}})
 
-        $(item).hover(function(){
-            gnbTl.play();
-        },function(){
-            gnbTl.pause(2).reverse();
-        });
+introTl
+.to({},{delay:0.2})
+.fromTo(".intro__logo-ico", {yPercent: 100, autoAlpha: 0}, {yPercent: 0, autoAlpha: 1, duration: 1})
+.to(".intro__logo-ico", {left:0, duration: 1})
+.fromTo(".intro__logo-text", {xPercent: 30, autoAlpha: 0}, {xPercent: 0, autoAlpha: 1, duration: 1})
+.to(".intro__bg-overlay", {xPercent: 100, duration: 3}, '-=1')
+.to(".intro", {autoAlpha: 0, duration: 1, onComplete: () => onComplete()})
 
-    });
-
-    $(".gnb__sub-item > a").click(function(){
-        $("html, body").animate({scrollTop : $(this.hash).offset().top}, 1000);
-        return false;
-    });
+function onComplete() {
+    //intro.remove();
+    lenis.start();
+    heroTl.play();
 }
 
 
 ////////// 1. Hero
-function hero() {
-
-const heroTl = gsap.timeline();
+const heroTl = gsap.timeline({paused: true});
 
 heroTl
 .to(".hero__contents", {autoAlpha: 1}) //FOUC 현상때문에 추가
-.from(".hero__title-wrap .hero__title", {opacity: 0, x: -100, duration: 1.5})
-.from(".hero__img-wrap .hero__img", {scale: 1.2, duration: 1.5}, '<')
+.from(".hero__title-wrap .hero__title", {opacity: 0, x: -100, duration: 1})
+.from(".hero__img-wrap .hero__img", {scale: 1.2, duration: 1}, '<')
 .from(".hero__text", {opacity: 0, x: 50, duration: 1}, '-=50%')
 .fromTo(".hero__text .text-fill",
     {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
@@ -90,12 +74,61 @@ $(window).scroll(function(){
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function layout() {
+
+    // Header
+    const gnbItem = gsap.utils.toArray(".gnb__list > li > a");
+
+    $(gnbItem).each(function (i, item) {
+        var gnbTl = new gsap.timeline({ paused: true, reversed: true });
+        gnbTl
+        .to(gnbItem[i], { duration: 0.5, text: gnbItem[i].getAttribute('data-text')}, 0);
+
+        $(item).hover(function(){
+            gnbTl.play();
+        },function(){
+            gnbTl.pause(2).reverse();
+        });
+
+    });
+
+
+    // Footer
+    $(".gnb__sub-item > a").click(function(){
+        $("html, body").animate({scrollTop : $(this.hash).offset().top}, 1000);
+        return false;
+    });
+
+    $(".top-btn").click(function(){
+        $("html, body").animate({scrollTop : 0}, 1000);
+        return false;
+    });
+
+    $(".brand-site").hover(function(){
+        $(".brand-site__list").stop().slideDown(300);
+    }, function(){
+        $(".brand-site__list").stop().slideUp(300);
+    }
+    );
 }
 
 
-
 ////////// 2. SOFWAVE 소개
-function introduce() {
+function secIntroduce() {
 
     ///// 2-0. Common - Fill text
     gsap.utils.toArray(".sec:not(.hero, .solution) .text-fill").forEach(text => {
@@ -283,7 +316,9 @@ function introduce() {
 }
 
 
-function promotion() {
+////////// 3 - 6
+function section() {
+    ////////// 3. Promotion
     let promotionTl = gsap.timeline({paused: true});
     promotionTl
     .from(".promotion__img-wrap", {x: -100, opacity: 0})
@@ -319,9 +354,10 @@ function promotion() {
             });
         }
     })
-}
 
-function contact() {
+
+    ////////// 4. Contact
+
     //var textArray = ["소프웨이브", "Sofwave"];
 
     //const contactTl = gsap.timeline({repeat:-1, repeatDelay:1, yoyo:true, duration: 2}); /* repeat:3, repeatDelay:1,  */
@@ -341,17 +377,15 @@ function contact() {
     contactTl
     .to(".contact__search-text", {text: { value: "소프웨이브" }})
 
-}
 
-function media() {
+    ////////// 5. Media
     $('.media__board-item').hover(function(){
         var value=$(this).attr('data-src');
         $('.media__board-thum-box img').attr('src', value);
     });
-}
 
 
-function sns() {
+    ////////// 6. Sns
     const swiper = new Swiper('.swiper', {
         slidesPerView: "auto",
         loop: true,
@@ -376,19 +410,4 @@ function sns() {
             }
         }
     });
-}
-
-
-function footer() {
-    $(".top-btn").click(function(){
-        $("html, body").animate({scrollTop : 0}, 1000);
-        return false;
-    });
-
-    $(".brand-site").hover(function(){
-        $(".brand-site__list").stop().slideDown(300);
-    }, function(){
-        $(".brand-site__list").stop().slideUp(300);
-    }
-    );
 }

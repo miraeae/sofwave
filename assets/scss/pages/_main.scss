@@ -12,6 +12,69 @@
     }
 }
 
+.intro{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color: $color-black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    &__logo {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(850 / 1920* 100vw);
+        min-width: 170px;
+        height: calc(205 / 1920* 100vw);
+        min-height: 41px;
+        z-index: 2;
+
+        &-ico{
+            position: absolute;
+            width: calc(150 / 1920* 100vw);
+            min-width: 30px;
+            visibility: hidden;
+            img {
+                width:100%;
+            }
+        }
+        &-text{
+            position: absolute;
+            right:0;
+            opacity: 0;
+        }
+    }
+
+    &__bg{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+
+        &-img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &-overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            background-color: $color-black;
+        }
+
+    }
+}
+
+
 .hero{
     background-color: $color-navy;
     height: 100vh;
