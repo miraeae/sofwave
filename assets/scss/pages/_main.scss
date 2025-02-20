@@ -26,6 +26,7 @@
         justify-content: space-between;
         align-items: center;
         z-index: 2;
+        visibility: hidden;
 
         @include laptop {
             padding-top: 85px;
@@ -56,6 +57,7 @@
                 padding-left: 0.5rem;
             }
         }
+
         .hero__img-wrap{
             font-size: 17px;
             position: absolute;
@@ -167,6 +169,10 @@
         filter: brightness(0.4);
         z-index: 1;
 
+        &.active {
+            top:0;
+        }
+
         @include laptop {
             top: 100px;
         }
@@ -174,7 +180,8 @@
 
         video {
             width: 100%;
-            height: calc(100vh - 135px);
+            //height: calc(100vh - 135px);
+            height:100%;
             object-fit: cover;
 
         }

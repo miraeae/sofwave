@@ -60,23 +60,36 @@ function header() {
 
 ////////// 1. Hero
 function hero() {
-const heroTl = gsap.timeline({ default: {duration: 1}});
+
+const heroTl = gsap.timeline();
 
 heroTl
-.from(".hero__title-wrap .hero__title", {opacity: 0, x: -100}, 0.5)
-.from(".hero__title-wrap .hero__badge", {opacity: 0, x: -100}, '-=50%')
-.from(".hero__title-wrap .hero__desc", {opacity: 0, y: 40 },'-=50%')
-
-.from(".hero__img-wrap .hero__img", {filter: "blur(5px)", scale: 1.2}, '-=1')
-.from(".hero__img-wrap .hero__img-desc", {opacity: 0, x: 20, duration:0.5})
-.fromTo(".hero__img-wrap .hero__img-desc .text-fill", 
-    {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
-    {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 3})
-
-.from(".hero__text", {opacity: 0, x: 50}, '-=3.5')
+.to(".hero__contents", {autoAlpha: 1}) //FOUC 현상때문에 추가
+.from(".hero__title-wrap .hero__title", {opacity: 0, x: -100, duration: 1.5})
+.from(".hero__img-wrap .hero__img", {scale: 1.2, duration: 1.5}, '<')
+.from(".hero__text", {opacity: 0, x: 50, duration: 1}, '-=50%')
 .fromTo(".hero__text .text-fill",
     {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
-    {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 3}, '<')
+    {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2}, '-=0.8')
+.from(".hero__title-wrap .hero__badge", {opacity: 0, x: -100, duration: 1}, '-=1.5')
+.from(".hero__img-wrap .hero__img-desc", {opacity: 0, x: 20, duration:0.5}, '-=1')
+.from(".hero__title-wrap .hero__desc", {opacity: 0, y: 40 },'<')
+.fromTo(".hero__img-wrap .hero__img-desc .text-fill", 
+    {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
+    {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2},'-=0.5')
+
+
+$(window).scroll(function(){
+    var wScroll = $(window).scrollTop();
+
+    if(wScroll >= 50) {
+        $(".hero__video-bg").addClass("active");
+    } else {
+        $(".hero__video-bg").removeClass("active");
+    }
+});
+
+
 }
 
 
@@ -340,23 +353,26 @@ function media() {
 
 function sns() {
     const swiper = new Swiper('.swiper', {
+        slidesPerView: "auto",
         loop: true,
-        spaceBetween: 30,
+        loopAdditionalSlides: 1, // 마지막 -> 처음 자연스러운 반복 기능
         grabCursor: true,
         //centeredSlides: true,
         //freeMode: true,
         autoplay: {
             delay: 5000,
-            //disableOnInteraction: false,
+            disableOnInteraction: false, //스와이프 후 자동 재생 비활성화 false
         },
         breakpoints: {
             1280: {
                 slidesPerView: 4,
                 slidesPerGroup: 1,
+                spaceBetween: 30,
             },
             720: {
                 slidesPerView: 3,
                 slidesPerGroup: 1,
+                spaceBetween: 15,
             }
         }
     });

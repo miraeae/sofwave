@@ -392,6 +392,7 @@ html::-webkit-scrollbar-thumb {
   justify-content: space-between;
   align-items: center;
   z-index: 2;
+  visibility: hidden;
 }
 @media (max-width: 1280px) {
   .hero__contents {
@@ -552,6 +553,9 @@ html::-webkit-scrollbar-thumb {
   filter: brightness(0.4);
   z-index: 1;
 }
+.hero__video-bg.active {
+  top: 0;
+}
 @media (max-width: 1280px) {
   .hero__video-bg {
     top: 100px;
@@ -559,7 +563,7 @@ html::-webkit-scrollbar-thumb {
 }
 .hero__video-bg video {
   width: 100%;
-  height: calc(100vh - 135px);
+  height: 100%;
   object-fit: cover;
 }
 
