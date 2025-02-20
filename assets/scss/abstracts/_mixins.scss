@@ -37,19 +37,30 @@
 }
 
 
-@mixin circleBtn($width: 136px) {
+@mixin circleBtn($width-height: 136px) {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   animation: bounce infinite 3s ease-in-out;
-  max-width: $width;
-  max-height: $width;
+  max-width: $width-height;
+  max-height: $width-height;
   filter: grayscale(100%) brightness(400%);
   transition: all 0.5s;
 
   @include laptop {
-      right: 5vw;
+    max-width: calc($width-height - 30px);
+    max-height: calc($width-height - 30px);
+  }
+
+  @include laptop {
+    max-width: calc($width-height - 40px);
+    max-height: calc($width-height - 40px);
+  }
+
+  @include mobile {
+    max-width: calc($width-height - 50px);
+    max-height: calc($width-height - 50px);
   }
 
   &:hover {
@@ -62,6 +73,10 @@
       padding: 5px 30% 0;
       font-size: 1.13rem;
       color: $color-primary;
+
+      @include laptop {
+        font-size: 0.9rem;
+      }
   }
 
   img {

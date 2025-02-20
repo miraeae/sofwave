@@ -7,7 +7,7 @@
     }
 
     h2{
-        font-size: 60px;
+        font-size: 3.75rem;
         font-weight: 800;
     }
 }
@@ -18,7 +18,7 @@
 
     &__contents{
         position: relative;
-        padding-top: 7.5rem;
+        padding-top: max(13.5vh, 65px);
         padding-bottom: 2.5rem;
         height: 100%;
         display: flex;
@@ -27,10 +27,6 @@
         align-items: center;
         z-index: 2;
         visibility: hidden;
-
-        @include laptop {
-            padding-top: 85px;
-        }
     }
 
     &__title-wrap{
@@ -59,10 +55,10 @@
         }
 
         .hero__img-wrap{
-            font-size: 17px;
+            font-size: 1.0625rem;
             position: absolute;
-            top: 34%;
-            right: 16%;
+            top: 34vh;
+            right: 16vw;
             
             @include laptop {
                 font-size:1rem;
@@ -70,13 +66,10 @@
     
             .hero__img-box{
                 overflow: hidden;
-                width:350px;
-                height:300px;
-
-                @include laptop {
-                    width: 300px;
-                    height: 250px;
-                }
+                // width:350px;
+                // height:300px;
+                width: calc(350 / 1920* 100vw);
+                height: calc(300 / 1920* 100vw);
 
                 img{
                     width:100%;
@@ -88,10 +81,13 @@
             .hero__img-desc{
                 margin-top: 5px;
                 line-height: 1.3;
+
+                @include laptop {
+                    font-size: 0.875rem;
+                }
                 strong {
                     font-weight: 700;
                 }
-    
                 p {
                     font-family: $font-serif;
                 }
@@ -113,7 +109,7 @@
         bottom: 2.5rem;
         text-align: center;
 
-        &-icon {
+        &-ico {
             display: inline-block;
             padding: 1.25rem 0.625rem;
             border-radius: 30px;
@@ -160,7 +156,7 @@
 
     &__video-bg{
         position: absolute;
-        top: 135px;
+        top: 16vh;
         left: 0;
         width: 100%;
         height: 100%;
@@ -173,17 +169,10 @@
             top:0;
         }
 
-        @include laptop {
-            top: 100px;
-        }
-
-
         video {
             width: 100%;
-            //height: calc(100vh - 135px);
             height:100%;
             object-fit: cover;
-
         }
     }
 }
@@ -215,20 +204,20 @@
         text-align: center;
 
         &-title{
-            font-size: 48px;
+            font-size: 3rem;
             max-width: 940px;
         }
 
         &-text{
-            margin-top: 60px;
-            font-size: 1.13rem;
+            margin-top: 3.75rem;
+            font-size: 1.125rem;
             color: #a1a1a1;
             max-width: 840px;
 
             &--info{
                 font-size: 1rem;
                 line-height: 1.8;
-                margin-top: 110px;
+                margin-top: 6.875rem;
             }
         }  
 
@@ -244,12 +233,12 @@
         }
 
         &--btm{
-            padding-bottom: 60px;
+            padding-bottom: 3.75rem;
 
             .info__row-title{
                 position: relative;
                 line-height: 1.8;
-                padding-bottom: 42px;
+                padding-bottom: 2.5rem;
 
                 &-line{
                     position: absolute;
@@ -279,12 +268,11 @@
         }
     }
 
-
     &__award{
-        margin-top: 80px;
+        margin-top: 5rem;
 
         &-title{
-            font-size: 24px;
+            font-size: 1.5rem;
             letter-spacing: -0.025em;
         }
 
@@ -293,7 +281,7 @@
             display: flex;
             justify-content: space-between;
             margin: 0 auto;
-            margin-top: 46px;
+            margin-top: 2.875rem;
         }
 
         &-item{
@@ -301,11 +289,7 @@
                 line-height: 1.4;
                 color: #7e7e7e;
                 max-width: 100px;
-                margin-top: 20px;
-
-                &:nth-child(3) {
-                    max-width:120px;
-                }
+                margin-top: 1.25rem;
             }
 
             &:nth-child(3) {
@@ -340,9 +324,9 @@
     &__contents{
         position: relative;
         max-width:1440px;
-        padding: 0 40px;
+        padding: 0 2.5rem;
         margin:0 auto;
-        padding-bottom: 160px;
+        padding-bottom: 10rem;
         z-index: 2;
         display: flex;
         flex-direction: column;
@@ -350,19 +334,19 @@
         align-items: flex-end;
 
         .func__title{
-            font-size: 70px;
-            margin-bottom: 80px;
+            font-size: 4.375rem;
+            margin-bottom: 5rem;
             text-align: right;
             font-weight: 200;
 
             > span:first-child {
                 display: block;
-                padding-right: 400px;
+                padding-right: 25rem;
             }
 
             > span:last-child{
                 font-weight: 600;
-                padding-right: 34px;
+                padding-right: 2.125rem;
             }
 
             &-line{
@@ -375,7 +359,7 @@
         }
 
         .func__desc{
-            font-size: 18px;
+            font-size: 1.125rem;
             color: #c6d0d4;
             max-width: 690px;
         }
@@ -384,13 +368,13 @@
             align-self: flex-start;
             max-width: 1200px;
             width: 100%;
-            margin: 100px auto 0;
+            margin: 6.25rem auto 0;
 
             .func__list-title{
-                font-size: 1.13rem;
+                font-size: 1.125rem;
                 color: #ff7e00;
                 font-weight: 500;
-                margin-bottom:30px;
+                margin-bottom: 1.875rem;
             }
 
             .func__list{
@@ -399,11 +383,11 @@
                 align-items: center;
 
                 .func__item{
-                    font-size: 22px;
+                    font-size: 1.375rem;
                     font-weight: 500;
-                    padding:8px 45px;
+                    padding:0.5rem 2.8125rem;
                     border: 1px solid $color-white;
-                    border-radius: 50px;
+                    border-radius: 3.125rem;
                 }
             }
         }
@@ -413,7 +397,6 @@
 .solution {
     position: relative;
     background-color: $color-primary;
-
 
     &__title-wrap{
         position: absolute;
@@ -426,31 +409,31 @@
         
         
         .solution__title{
-            font-size: 55px;
+            font-size: 3.4375rem;
             font-weight: 800;
 
             @include laptop {
-                font-size: 45px;
+                font-size: 2.8125rem;
             }
         }
     
         .solution__badge{
             display: inline-block;
-            font-size: 1.13rem;
+            font-size: 1.125rem;
             border: 1px solid $color-white;
-            padding: 5px 20px;
+            padding: 0.3125rem 1.25rem;
             border-radius: 30px;
-            margin-top: 60px;
+            margin-top: 3.75rem;
 
             @include laptop {
                 font-size: 1rem;
-                margin-top: 40px;
+                margin-top: 2.5rem;
             }
         }
     
         .solution__desc{
-            margin-top: 18px;
-            font-size:1.13rem;
+            margin-top: 1.125rem;
+            font-size: 1.125rem;
             max-width: 420px;
             color: #d2dee8;
 
@@ -476,7 +459,7 @@
             height: calc(570 / 930* 100vh);
             background-color: $color-navy;
             overflow: hidden;
-            border-radius: 40px;
+            border-radius: 2.5rem;
 
             .solution__img-box{
                 position: absolute;
@@ -497,22 +480,22 @@
 
         .solution__merit {
             &-item{
-                font-size: 32px;
+                font-size: 2rem;
                 font-weight: 200;
                 line-height: 1.4;
                 opacity: 0.2;
-                margin-bottom: 200px;
+                margin-bottom: 12.5rem;
             }
         }
 
         .solution__reason{
             &-title{
-                font-size:32px;
+                font-size:2rem;
             }
             &-desc{
-                font-size: 22px;
+                font-size: 1.375rem;
                 line-height: 2;
-                margin-top: 10px;
+                margin-top: 0.625rem;
             }
         }
     }
@@ -560,13 +543,12 @@
                 display: block;
                 width: 100%;
             }
-
         }
 
         &-text{
-            font-size:48px;
+            font-size:3rem;
             font-weight: 200;
-            margin-top: 25px;
+            margin-top: 1.5625rem;
             overflow: hidden;
 
             > span {
@@ -590,9 +572,9 @@
         text-align: right;
 
         &-num{
-            font-size: 1.13rem;
+            font-size: 1.125rem;
             font-weight: 500;
-            margin-bottom: 12px;
+            margin-bottom: 0.75rem;
             line-height: 1;
         }
         
@@ -601,7 +583,7 @@
             height: 2px;
             width: 25px;
             background-color: $color-white;
-            margin-bottom: 12px;
+            margin-bottom: 0.75rem;
             transform-origin: right center;
             margin-left: auto;
             transition: width 0.5s;
@@ -622,12 +604,12 @@
         gap: 4vw;
 
         &--top{
-            top:100px;
+            top:9vh;
             z-index: 3;
         }
 
         &--btm{
-            bottom:200px;
+            bottom:16vh;
             animation-direction:reverse;
             z-index: 1;
         }
@@ -662,7 +644,7 @@
         right: 11vw;
         width: calc(700 / 1920* 100vw);
         height: calc(394 / 1920* 100vw);
-        border-radius: 25px;
+        border-radius: 1.5625rem;
         overflow: hidden;
 
         video{
@@ -674,23 +656,27 @@
 
 .contact{
     &__inner{
-        padding-top: 240px;
+        padding-top: 15rem;
     }
 
     &__row{
         position: relative;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
     }
 
     &__text-box{
         width: calc(100% - 480px);
 
         .contact__title{
-            font-size: 120px;
-            margin-bottom: 75px;
+            font-size: 7.5rem;
+            margin-bottom: 4.6875rem;
             letter-spacing: -0.025em;
             line-height: 1;
+
+            @include laptop {
+                font-size: 5.625rem;
+            }
 
             .font-serif{
                 color: $color-primary;
@@ -716,12 +702,12 @@
     &__btn{
         position: absolute;
         @include circleBtn(163px);
-        top: 32vh;
-        right: 6.5vw;
+        top: 17.75rem;
+        right: 7.5rem;
     }
 
     &__search {
-        margin-top: 210px;
+        margin-top: 13.125rem;
         display: flex;
         justify-content: center;
         align-items: stretch;
@@ -765,7 +751,7 @@
                 border-right: 5px solid transparent;
                 border-top: 7px solid #c0c0c0;
                 transform: translateY(-2px);
-                margin-left: 15px;
+                margin-left: 0.9375rem;
             }
         }
 
@@ -774,7 +760,7 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: $color-black;
-            padding-left: 40px;
+            padding-left: 2.5rem;
             width: calc(100% - 150px);
         }
 
@@ -785,18 +771,17 @@
             justify-content: center;
             background-color: $color-primary;
             border-radius: 10px;
-            margin-left: 15px;
+            margin-left: 0.9375rem;
         }
     }
 }
 
 .media{
     overflow: hidden;
-    padding-bottom: 140px;
 
     &__inner{
-        padding-top: 190px;
-        padding-bottom: 140px;
+        padding-top: 11.875rem;
+        padding-bottom: 8.75rem;
     }
 
     &__board{
@@ -804,7 +789,7 @@
         display: flex;
         align-items: flex-end;
         width: calc(100% + 236px);
-        gap: 136px;
+        gap: 8.5rem;
 
         @include laptop {
             width: 100%;
@@ -821,36 +806,36 @@
         &-item{
             a{
                 display: block;
-                padding-bottom: 30px;
-                padding-top: 50px;
+                padding-bottom: 1.875rem;
+                padding-top: 3.125rem;
                 border-bottom: 1px solid rgb(90, 90, 90);
             }
 
             .media__board-kate{
                 display: inline-block;
-                padding:9px 16px 7px;
-                font-size: 14px;
+                padding:0.5625rem 1rem 0.4375rem;
+                font-size: 0.875rem;
                 border-radius: 30px;
                 background-color: dodgerblue;
                 line-height: 1;
             }
 
             .media__board-title{
-                font-size: 22px;
-                margin-top: 18px;
-                margin-bottom: 15px;
+                font-size: 1.375rem;
+                margin-top: 1.125rem;
+                margin-bottom: 0.9375rem;
                 line-height: 1.2;
                 @extend %ellipsis;
             }
 
             .media__board-text{
                 color: rgb(163, 163, 163);
-                margin-bottom: 26px;
+                margin-bottom: 1.625rem;
                 @extend %ellipsis;
             }
 
             .media__board-num{
-                font-size: 14px;
+                font-size: 0.875rem;
                 color: rgb(97, 97, 97);
                 line-height: 1;
                 @extend %ellipsis;
@@ -888,7 +873,7 @@
             }
 
             .media__board-btn{
-                margin-top: 56px;
+                margin-top: 3.5rem;
 
                 a{
                     font-size: 1.25rem;
@@ -904,11 +889,11 @@
 }
 
 .sns{
-    padding-top: 140px;
+    padding-top: 8.75rem;
     overflow: hidden;
 
     &__title{
-        margin-bottom: 70px;
+        margin-bottom: 4.375rem;
     }
 
     &__swiper.swiper{
@@ -926,7 +911,7 @@
         }
     }
     &__text{
-        font-size: 1.13rem;
+        font-size: 1.125rem;
         line-height: 1;
         margin-top: 10px;
         text-overflow: ellipsis;
@@ -936,7 +921,7 @@
 }
 
 .outro{
-    padding: 180px 0;
+    padding: 11.25rem 0;
     overflow: hidden;
 
     &__marquee{
@@ -954,7 +939,7 @@
     &__text{
         font-size: 1.25rem;
         font-weight: 500;
-        margin-top: 70px;
+        margin-top: 4.375rem;
     }
 
     .top-btn{
@@ -989,7 +974,7 @@
         }
 
         span{
-            margin-top: 6px;
+            margin-top: 0.375rem;
         }
     }
 }
