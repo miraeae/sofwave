@@ -1,10 +1,53 @@
+console.log(document.cookie);
+
+
+// 쿠키 저장
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+}
+
+// 쿠키 가져오기
+function getCookie(name) {
+    const cookieArray = document.cookie.split(';');
+    for (let i = 0; i < cookieArray.length; i++) {
+        const cookie = cookieArray[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring((name + '=').length);
+        }
+    }
+    return null;
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Disable scrolling until the intro ends
     lenis.stop();
 
     gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
-    introTl.play();
+    const intro = document.getElementById("intro");
+    const hasVisited = getCookie("visited");
+    console.log(hasVisited)
+
+    if (hasVisited) {
+        introEnable = false;
+        console.log("introEnable false")
+    } else {
+        introEnable = true;
+        setCookie("visited", "true", 1);
+        console.log("introEnable true")
+    }
+
+    // 이미 인트로를 봤다면 제거
+    if(introEnable == false) {
+        intro.remove();
+        lenis.start();
+        heroTl.play();
+    } else {
+        introTl.play();
+    }
 
     layout();
     secIntroduce();
