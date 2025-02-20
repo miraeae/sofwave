@@ -1,59 +1,14 @@
-console.log(document.cookie);
-
-
-// 쿠키 저장
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
-}
-
-// 쿠키 가져오기
-function getCookie(name) {
-    const cookieArray = document.cookie.split(';');
-    for (let i = 0; i < cookieArray.length; i++) {
-        const cookie = cookieArray[i].trim();
-        if (cookie.startsWith(name + '=')) {
-            return cookie.substring((name + '=').length);
-        }
-    }
-    return null;
-}
-
-
 document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(ScrollTrigger, TextPlugin)
+
     // Disable scrolling until the intro ends
     lenis.stop();
 
-    gsap.registerPlugin(ScrollTrigger, TextPlugin)
-
-    const intro = document.getElementById("intro");
-    const hasVisited = getCookie("visited");
-    console.log(hasVisited)
-
-    if (hasVisited) {
-        introEnable = false;
-        console.log("introEnable false")
-    } else {
-        introEnable = true;
-        setCookie("visited", "true", 1);
-        console.log("introEnable true")
-    }
-
-    // 이미 인트로를 봤다면 제거
-    if(introEnable == false) {
-        intro.remove();
-        lenis.start();
-        heroTl.play();
-    } else {
-        introTl.play();
-    }
-
+    intro(); // 0 - 1
+    introduce(); // 2
+    section(); // 3 - 6
     layout();
-    secIntroduce();
-    section();
 });
-
 
 
 // 부드럽게 스크롤
@@ -68,110 +23,102 @@ gsap.ticker.add((time)=>{
 gsap.ticker.lagSmoothing(0)
 
 
+////////// 0 - 1. Intro, Hero
+function intro() {
+    // 0. Intro
+    const intro = document.getElementById("intro");
+    const introTl = gsap.timeline({paused: true, default: {ease: "power4.out"}})
 
-////////// 0. Intro
-const introTl = gsap.timeline({paused: true, default: {ease: "power4.out"}})
+    introTl
+    //.to({},{delay:0.2})
+    .fromTo(".intro__logo-ico", {yPercent: 100, autoAlpha: 0}, {yPercent: 0, autoAlpha: 1, duration: 1})
+    .to(".intro__logo-ico", {left:0, duration: 1})
+    .fromTo(".intro__logo-text", {xPercent: 30, autoAlpha: 0}, {xPercent: 0, autoAlpha: 1, duration: 1}, '-=50%')
+    .to(".intro__bg-overlay", {xPercent: 100, duration: 3}, '-=1')
+    .to(".intro", {autoAlpha: 0, duration: 1, onComplete: () => onComplete()})
 
-introTl
-.to({},{delay:0.2})
-.fromTo(".intro__logo-ico", {yPercent: 100, autoAlpha: 0}, {yPercent: 0, autoAlpha: 1, duration: 1})
-.to(".intro__logo-ico", {left:0, duration: 1})
-.fromTo(".intro__logo-text", {xPercent: 30, autoAlpha: 0}, {xPercent: 0, autoAlpha: 1, duration: 1})
-.to(".intro__bg-overlay", {xPercent: 100, duration: 3}, '-=1')
-.to(".intro", {autoAlpha: 0, duration: 1, onComplete: () => onComplete()})
+    function onComplete() {
+        intro.remove();
+        lenis.start();
+        heroTl.play();
+    }
 
-function onComplete() {
-    //intro.remove();
-    lenis.start();
-    heroTl.play();
-}
+    // 1. Hero
+    const heroTl = gsap.timeline({paused: true});
 
-
-////////// 1. Hero
-const heroTl = gsap.timeline({paused: true});
-
-heroTl
-.to(".hero__contents", {autoAlpha: 1}) //FOUC 현상때문에 추가
-.from(".hero__title-wrap .hero__title", {opacity: 0, x: -100, duration: 1})
-.from(".hero__img-wrap .hero__img", {scale: 1.2, duration: 1}, '<')
-.from(".hero__text", {opacity: 0, x: 50, duration: 1}, '-=50%')
-.fromTo(".hero__text .text-fill",
-    {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
-    {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2}, '-=0.8')
-.from(".hero__title-wrap .hero__badge", {opacity: 0, x: -100, duration: 1}, '-=1.5')
-.from(".hero__img-wrap .hero__img-desc", {opacity: 0, x: 20, duration:0.5}, '-=1')
-.from(".hero__title-wrap .hero__desc", {opacity: 0, y: 40 },'<')
-.fromTo(".hero__img-wrap .hero__img-desc .text-fill", 
-    {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
-    {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2},'-=0.5')
+    heroTl
+    .to(".hero__contents", {autoAlpha: 1}) //FOUC 현상때문에 추가
+    .from(".hero__title-wrap .hero__title", {opacity: 0, x: -100, duration: 1})
+    .from(".hero__img-wrap .hero__img", {filter: "blur(5px)", scale: 1.2, duration: 1}, '<')
+    .from(".hero__text", {opacity: 0, x: 50, duration: 1}, '-=50%')
+    .fromTo(".hero__text .text-fill",
+        {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
+        {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2}, '-=0.8')
+    .from(".hero__title-wrap .hero__badge", {opacity: 0, x: -100, duration: 1}, '-=1.5')
+    .from(".hero__img-wrap .hero__img-desc", {opacity: 0, x: 20, duration:0.5}, '-=1')
+    .from(".hero__title-wrap .hero__desc", {opacity: 0, y: 40 },'<')
+    .fromTo(".hero__img-wrap .hero__img-desc .text-fill", 
+        {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
+        {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2},'-=0.5')
 
 
-$(window).scroll(function(){
-    var wScroll = $(window).scrollTop();
+    $(window).scroll(function(){
+        var wScroll = $(window).scrollTop();
 
-    if(wScroll >= 50) {
-        $(".hero__video-bg").addClass("active");
+        if(wScroll >= 50) {
+            $(".hero__video-bg").addClass("active");
+        } else {
+            $(".hero__video-bg").removeClass("active");
+        }
+    });
+
+
+    // Cookie
+    // 쿠키 저장
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+    }
+
+    // 쿠키 가져오기
+    function getCookie(name) {
+        const cookieArray = document.cookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            const cookie = cookieArray[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                return cookie.substring((name + '=').length);
+            }
+        }
+        return null;
+    }
+
+    // 인트로 봤는지 확인
+    const hasVisited = getCookie("visited");
+    //console.log(hasVisited);
+
+    if (hasVisited) {
+        introEnable = false;
+        //console.log("introEnable false");
     } else {
-        $(".hero__video-bg").removeClass("active");
+        introEnable = true;
+        setCookie("visited", "true", 1);
+        //console.log("introEnable true");
     }
-});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function layout() {
-
-    // Header
-    const gnbItem = gsap.utils.toArray(".gnb__list > li > a");
-
-    $(gnbItem).each(function (i, item) {
-        var gnbTl = new gsap.timeline({ paused: true, reversed: true });
-        gnbTl
-        .to(gnbItem[i], { duration: 0.5, text: gnbItem[i].getAttribute('data-text')}, 0);
-
-        $(item).hover(function(){
-            gnbTl.play();
-        },function(){
-            gnbTl.pause(2).reverse();
-        });
-
-    });
-
-
-    // Footer
-    $(".gnb__sub-item > a").click(function(){
-        $("html, body").animate({scrollTop : $(this.hash).offset().top}, 1000);
-        return false;
-    });
-
-    $(".top-btn").click(function(){
-        $("html, body").animate({scrollTop : 0}, 1000);
-        return false;
-    });
-
-    $(".brand-site").hover(function(){
-        $(".brand-site__list").stop().slideDown(300);
-    }, function(){
-        $(".brand-site__list").stop().slideUp(300);
+    // 이미 인트로를 봤다면 바로 Hero 시작
+    if(introEnable == false) {
+        intro.remove();
+        lenis.start();
+        heroTl.play();
+    } else {
+        introTl.play();
     }
-    );
 }
 
 
 ////////// 2. SOFWAVE 소개
-function secIntroduce() {
+function introduce() {
 
     ///// 2-0. Common - Fill text
     gsap.utils.toArray(".sec:not(.hero, .solution) .text-fill").forEach(text => {
@@ -359,7 +306,7 @@ function secIntroduce() {
 }
 
 
-////////// 3 - 6
+////////// 3 - 6. 홍보영상, Contact, Media, SNS
 function section() {
     ////////// 3. Promotion
     let promotionTl = gsap.timeline({paused: true});
@@ -453,4 +400,44 @@ function section() {
             }
         }
     });
+}
+
+
+////////// Layout
+function layout() {
+
+    // Header
+    const gnbItem = gsap.utils.toArray(".gnb__list > li > a");
+
+    $(gnbItem).each(function (i, item) {
+        var gnbTl = new gsap.timeline({ paused: true, reversed: true });
+        gnbTl
+        .to(gnbItem[i], { duration: 0.5, text: gnbItem[i].getAttribute('data-text')}, 0);
+
+        $(item).hover(function(){
+            gnbTl.play();
+        },function(){
+            gnbTl.pause(2).reverse();
+        });
+
+    });
+
+
+    // Footer
+    $(".gnb__sub-item > a").click(function(){
+        $("html, body").animate({scrollTop : $(this.hash).offset().top}, 1000);
+        return false;
+    });
+
+    $(".top-btn").click(function(){
+        $("html, body").animate({scrollTop : 0}, 1000);
+        return false;
+    });
+
+    $(".brand-site").hover(function(){
+        $(".brand-site__list").stop().slideDown(300);
+    }, function(){
+        $(".brand-site__list").stop().slideUp(300);
+    }
+    );
 }
