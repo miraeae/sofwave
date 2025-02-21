@@ -33,7 +33,7 @@ function intro() {
     //.to({},{delay:0.2})
     .fromTo(".intro__logo-ico", {yPercent: 100, autoAlpha: 0}, {yPercent: 0, autoAlpha: 1, duration: 1})
     .to(".intro__logo-ico", {left:0, duration: 1})
-    .fromTo(".intro__logo-text", {xPercent: 30, autoAlpha: 0}, {xPercent: 0, autoAlpha: 1, duration: 1}, '-=50%')
+    .fromTo(".intro__logo-text", {xPercent: 30, autoAlpha: 0}, {xPercent: 0, autoAlpha: 1, duration: 1})
     .to(".intro__bg-overlay", {xPercent: 100, duration: 3}, '-=1')
     .to(".intro", {autoAlpha: 0, duration: 1, onComplete: () => onComplete()})
 
@@ -61,7 +61,7 @@ function intro() {
         {background: "linear-gradient(90deg, rgba(0,204,255,1) 0%, rgba(255,255,255,1) 0%)"},
         {background: 'linear-gradient(90deg, rgba(0,204,255,1) 100%, rgba(255,255,255,1) 100%)', duration: 2},'-=0.5')
 
-
+    
     $(window).scroll(function(){
         var wScroll = $(window).scrollTop();
 
@@ -140,10 +140,10 @@ function introduce() {
 
 
     ///// 2-1. Info
-    gsap.utils.toArray(".info__row").forEach(row => {
-        gsap.fromTo(row, {opacity:"0.3"}, {opacity: 1,
+    gsap.utils.toArray(".info__contents").forEach(content => {
+        gsap.fromTo(content, {opacity:"0.3"}, {opacity: 1,
             scrollTrigger: {
-                trigger: row,
+                trigger: content,
                 start: "top 80%",
                 end: "30% bottom",
                 scrub: 1,
@@ -151,21 +151,6 @@ function introduce() {
             }
         })
     });
-    
-
-    // const infoLineTl = gsap.timeline({
-    //     scrollTrigger: {
-    //         trigger: ".info__approve-title",
-    //         start: "top center",
-    //         end: "bottom center",
-    //         scrub: 1,
-    //         markers: true,
-    //     }
-    // });
-
-    // infoLineTl
-    // .fromTo(".info__approve-title-line svg:first-child", {width: '0'}, {width: '320px'})
-    // .fromTo(".info__approve-title-line svg:last-child", {width: '0'}, {width: '320px'}, "-=50%")
 
     const awardTl = gsap.timeline({
         scrollTrigger: {
@@ -207,34 +192,72 @@ function introduce() {
     funcTl
     .to(".func__title-line", {width:0})
     .from(".func__desc", {y:100, opacity:0})
-    .from(".func__list > li", {y:-100, opacity:0, stagger:0.1,}, "-=0.2")
+    .from(".func__list > li", {y:100, opacity:0, stagger:0.1,}, "-=0.2")
 
 
 
     ///// 2-3. Solution
-    ScrollTrigger.create({
-        trigger:'.solution__title-wrap',
-        start:"top top",
-        pin: true,
-        endTrigger: ".solution__text-wrap",
-        end: "bottom bottom",
-        // markers: true,
-        // id: "solutionTitPin"
-    })
+    const mm = gsap.matchMedia();
+    mm.add({
+        isDesktop: `(min-width: 1025px)`,
+        isMobile: `(max-width:1024px)`
+    }, (context) => {
+        // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+        let { isDesktop, isMobile } = context.conditions;
 
+        if(isDesktop) {
+            // Title Pin
+            ScrollTrigger.create({
+                trigger:'.solution__title-wrap',
+                start:"top top",
+                pin: true,
+                endTrigger: ".solution__text-wrap",
+                end: "bottom bottom",
+                // markers: true,
+                // id: "solutionTitPin"
+            })
 
-    gsap.to(".solution__img-inner", { 
-        scrollTrigger: {
-            trigger: ".solution",
-            start: "top top",
-            end: () => '+=' + window.innerHeight * 1,
-            //markers: true,
-            scrub: 1,
-        },
-        width: "100%",
-        height: "100%",
-        "border-radius": "0",
-    })
+            // Img Box
+            gsap.to(".solution__img-inner", { 
+                scrollTrigger: {
+                    trigger: ".solution",
+                    start: "top top",
+                    end: () => '+=' + window.innerHeight * 1,
+                    //markers: true,
+                    scrub: 1,
+                },
+                width: "100%",
+                height: "100%",
+                "border-radius": "0",
+            })
+        } else {
+            //// isMobile
+            // Img Box
+            gsap.to(".solution__img-inner", { 
+                scrollTrigger: {
+                    trigger: ".solution",
+                    start: "-=30% top",
+                    end: () => '+=' + window.innerHeight * 1,
+                    //markers: true,
+                    scrub: 1,
+                },
+                width: "200vw",
+                height: "200vw"
+            })
+
+            gsap.to(".solution", { 
+                scrollTrigger: {
+                    trigger: ".solution",
+                    start: "-=45% top",
+                    end: "center center",
+                    //markers: true,
+                    scrub: 1,
+                },
+                background : "#061020"
+            })
+        }
+    
+    });
 
 
     gsap.utils.toArray(".solution__merit > li").forEach(item => {
@@ -342,30 +365,24 @@ function section() {
                     promotionTl.reverse();
                 },
             });
+        } else {
+            ScrollTrigger.create({
+                trigger: ".promotion",
+                start: "-30% top",
+                scrub: 2,
+                onEnter: () => {
+                    promotionTl.play();
+                },
+                onLeaveBack: () => {
+                    promotionTl.reverse();
+                },
+            });
         }
     })
 
 
     ////////// 4. Contact
-
-    //var textArray = ["소프웨이브", "Sofwave"];
-
-    //const contactTl = gsap.timeline({repeat:-1, repeatDelay:1, yoyo:true, duration: 2}); /* repeat:3, repeatDelay:1,  */
-    // contactTl
-    // .to(".contact__search-text", {text:messages})
-
-    // const tl = gsap.timeline({ delay: 2 });
-
-    // for (let i = 0; i < 2; i++) {
-    //     contactTl
-    //     .to(".contact__search-text", {text: textArray[i] , ease: "none"})
-    //     .to(".contact__search-text", {text: textArray[i] , ease: "none"})
-    // }
-
-    const contactTl = gsap.timeline({repeat:-1, repeatDelay:1, yoyo:true, duration: 4});
-
-    contactTl
-    .to(".contact__search-text", {text: { value: "소프웨이브" }})
+    gsap.to(".contact__search-text", {text: { value: "소프웨이브" }, repeat:-1, repeatDelay:1, yoyo:true, duration: 2})
 
 
     ////////// 5. Media
@@ -377,7 +394,9 @@ function section() {
 
     ////////// 6. Sns
     const swiper = new Swiper('.swiper', {
-        slidesPerView: "auto",
+        slidesPerView: 2,
+        spaceBetween: 15,
+        slidesPerGroup: 1,
         loop: true,
         loopAdditionalSlides: 1, // 마지막 -> 처음 자연스러운 반복 기능
         grabCursor: true,
@@ -388,15 +407,14 @@ function section() {
             disableOnInteraction: false, //스와이프 후 자동 재생 비활성화 false
         },
         breakpoints: {
-            1280: {
+            //브라우저가 1024보다 클 때
+            1024: {
                 slidesPerView: 4,
-                slidesPerGroup: 1,
                 spaceBetween: 30,
             },
-            720: {
+            //브라우저가 768보다 클 때
+            768: {
                 slidesPerView: 3,
-                slidesPerGroup: 1,
-                spaceBetween: 15,
             }
         }
     });
@@ -422,13 +440,38 @@ function layout() {
 
     });
 
-
-    // Footer
-    $(".gnb__sub-item > a").click(function(){
+    $(".gnb__sub-item > a, .gnb-mobile__sub-item > a").click(function(){
         $("html, body").animate({scrollTop : $(this.hash).offset().top}, 1000);
         return false;
     });
 
+    // Gnb Mobile
+    gsap.set(".gnb-mobile", {xPercent:100})
+
+    $(".gnb-trigger").click(function() {
+        $(this).toggleClass("active");
+    
+        if($(this).hasClass("active")){
+            gsap.to(".gnb-mobile", {xPercent:0})
+            $(".gnb-mobile__overlay").fadeIn(300);
+        }else{
+            gsap.to(".gnb-mobile", {xPercent:100})
+            $(".gnb-mobile__overlay").fadeOut(300);
+        }
+    });
+
+    $(".gnb-mobile__item > a").click(function() {
+        $(this).toggleClass("active");
+    
+        if($(this).hasClass("active")){
+            $(this).next(".gnb-mobile__sub-list").stop().slideDown(300);
+        }else{
+            $(this).next(".gnb-mobile__sub-list").stop().slideUp(300);
+        }
+    });
+
+
+    // Footer
     $(".top-btn").click(function(){
         $("html, body").animate({scrollTop : 0}, 1000);
         return false;

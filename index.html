@@ -11,7 +11,7 @@
     <meta property="og:title" content="Sofwave Clone Coding">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://miraeae.github.io/sofwave">
-    <meta property="og:description" content="Sofwave Clone Coding">
+    <meta property="og:description" content="소프웨이브 클론 코딩 프로젝트">
 
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
@@ -27,14 +27,14 @@
 <body>
     <header class="header">
         <div class="logo">
-            <a href="/">
+            <a href="https://miraeae.github.io/sofwave">
                 <img src="./assets/images/logo.png" alt="로고">
             </a>
         </div>
-        <nav class="gnb">
+        <nav class="gnb pc-only">
             <ul class="gnb__list">
                 <li class="gnb__item"><a href="#" data-text="소프웨이브">SOFWAVE™</a>
-                    <ul class="gnb__sub">
+                    <ul class="gnb__sub-list">
                         <li class="gnb__sub-item"><a href="#hero">SOFWAVE</a></li>
                         <li class="gnb__sub-item"><a href="#info">SOFWAVE 소개</a></li>
                         <li class="gnb__sub-item"><a href="#promotion">홍보영상</a></li>
@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 <li class="gnb__item"><a href="#" data-text="컨택트">CONTACT</a>
-                    <ul class="gnb__sub">
+                    <ul class="gnb__sub-list">
                         <li class="gnb__sub-item"><a href="#">병원찾기</a></li>
                         <li class="gnb__sub-item"><a href="#">데모예약</a></li>
                     </ul>
@@ -52,9 +52,35 @@
                 <li class="gnb__item"><a href="#" data-text="보도자료">MEDIA</a></li>
             </ul>
         </nav>
+        <div class="gnb-trigger tb-show">
+            <span class="gnb-trigger__bar"></span>
+            <span class="gnb-trigger__bar"></span>
+        </div>
+        <nav class="gnb-mobile tb-show">
+            <ul class="gnb-mobile__list">
+                <li class="gnb-mobile__item"><a href="#" data-text="소프웨이브">SOFWAVE™</a>
+                    <ul class="gnb-mobile__sub-list">
+                        <li class="gnb-mobile__sub-item"><a href="#hero">SOFWAVE</a></li>
+                        <li class="gnb-mobile__sub-item"><a href="#info">SOFWAVE 소개</a></li>
+                        <li class="gnb-mobile__sub-item"><a href="#promotion">홍보영상</a></li>
+                        <li class="gnb-mobile__sub-item"><a href="#contact">CONTACT</a></li>
+                        <li class="gnb-mobile__sub-item"><a href="#media">MEDIA</a></li>
+                        <li class="gnb-mobile__sub-item"><a href="#sns">SNS</a></li>
+                    </ul>
+                </li>
+                <li class="gnb-mobile__item"><a href="#" data-text="컨택트">CONTACT</a>
+                    <ul class="gnb-mobile__sub-list">
+                        <li class="gnb-mobile__sub-item"><a href="#">병원찾기</a></li>
+                        <li class="gnb-mobile__sub-item"><a href="#">데모예약</a></li>
+                    </ul>
+                </li>
+                <li class="gnb-mobile__item"><a href="#" data-text="보도자료">MEDIA</a></li>
+            </ul>
+        </nav>
+        <div class="gnb-mobile__overlay"></div>
     </header>
     <main class="container">
-        <section id="intro" class="intro">
+        <section id="intro" class="sec intro">
             <div class="intro__logo">
                 <div class="intro__logo-ico">
                     <img src="./assets/images/intro_wave.png" alt="로고 물결 아이콘">
@@ -84,13 +110,13 @@
                         </div>                
                     </div>
                 </div>
-                    <p class="hero__text">
-                        <span class="text-fill">
-                            We <span class="fw-200">are</span> <span class="font-serif">Sofwave</span>
-                            <span class="fw-200">Today's</span> technology <span class="fw-200">is</span>
-                            Tomorrow's <span class="font-serif">medicine.</span>
-                        </span>
-                    </p>
+                <p class="hero__text">
+                    <span class="text-fill">
+                        We <span class="fw-200">are</span> <span class="font-serif">Sofwave</span>
+                        <span class="fw-200">Today's</span> technology <span class="fw-200">is</span>
+                        Tomorrow's <span class="font-serif">medicine.</span>
+                    </span>
+                </p>
                 <div class="hero__scroll">
                     <div class="hero__scroll-ico">
                         <span></span>
@@ -115,28 +141,28 @@
             <div class="info__bg">
                 <img class="info__bg-img" src="./assets/images/s1_img.jpg" alt="소프웨이브 제품 이미지">
             </div>
-            <div class="info__row info__row--top">
-                <h3 class="info__row-title">
+            <div class="info__contents info__contents--top">
+                <h3 class="info__title">
                     소프웨이브는 <strong>주름의 깊이 1.5mm에 최적화된</strong>
                     <strong>11.5MHz의 에너지</strong>를 7개의 트랜듀서로 강하게!
                     <strong>쿨링 시스템</strong>을 통해 피부 손상 없이 안전하게!
                     <strong>탄력 개선</strong>을 위한 의료기기 시술입니다.
                 </h3>
-                <p class="info__row-text">콜라겐 뿐만 아닌, 엘라스틴 재생까지 차별화된 편안한 소프웨이브를 지금 바로 경험해보세요.</p>
-                <p class="info__row-text info__row-text--info">
+                <p class="info__text">콜라겐 뿐만 아닌, 엘라스틴 재생까지 차별화된 편안한 소프웨이브를 지금 바로 경험해보세요.</p>
+                <p class="info__text info__text--info">
                     이 제품은 '의료기기'이며, '사용상의 주의사항'과 '사용방법'을 잘 읽고 사용하십시오" 집속형초음파자극시스템 / 집속된 초음파로
                     조직을 응고하여 양볼, 턱, 눈썹, 목 주름을 개선하는데 사용하는 기구 (본 제품은 만22세 이상의 주름  환자에게 사용해야 함) <br>
                     의료기기 광고심의필 : 32023-I10-45-3316 (유효기간 26.11.22)
                 </p>
             </div>
-            <div class="info__row info__row--btm">
-                <h3 class="info__row-title">
+            <div class="info__contents info__contents--btm">
+                <h3 class="info__title">
                     <span class="text-fill">
                         미국 FDA 승인받은 리프팅계의 뉴웨이브 <br>
                         지금부터 소프웨이브™ <br>
                         Sofwave™ 지금 바로 경험해보세요.
                     </span>
-                    <span class="info__row-title-line">
+                    <span class="info__title-line">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328.77 38.33">
                             <line x1="1.5" y1="36.83" x2="327.27" y2="1.5"></line>
                             <line x1="128.56" y1="33.06" x2="327.27" y2="11.51"></line>
@@ -147,24 +173,34 @@
                     <h4 class="info__award-title">Sofwave™ <span class="font-serif">Awards</span></h4>
                     <ul class="info__award-list">
                         <li class="info__award-item">
-                            <img class="info__award-item-img" src="./assets/images/award01.png" alt="Best latest in Ultrasound 어워즈">
-                            <p class="info__award-item-name">Best latest in Ultrasound</p>
+                            <div class="info__award-img-box">
+                                <img class="info__award-img" src="./assets/images/award01.png" alt="Best latest in Ultrasound 어워즈">
+                            </div>
+                            <p class="info__award-name">Best latest in Ultrasound</p>
                         </li>
                         <li class="info__award-item">
-                            <img class="info__award-item-img" src="./assets/images/award02.png" alt="Future of Beauty Award for Treatments 어워즈">
-                            <p class="info__award-item-name">Future of Beauty Award for Treatments</p>
+                            <div class="info__award-img-box">
+                                <img class="info__award-img" src="./assets/images/award02.png" alt="Future of Beauty Award for Treatments 어워즈">
+                            </div>
+                            <p class="info__award-name">Future of Beauty Award for Treatments</p>
                         </li>
                         <li class="info__award-item">
-                            <img class="info__award-item-img" src="./assets/images/award03.png" alt="Best Professional Grade treatments 어워즈">
-                            <p class="info__award-item-name">Best Professional Grade treatments</p>
+                            <div class="info__award-img-box">
+                                <img class="info__award-img" src="./assets/images/award03.png" alt="Best Professional Grade treatments 어워즈">
+                            </div> 
+                            <p class="info__award-name">Best Professional Grade treatments</p>
                         </li>
                         <li class="info__award-item">
-                            <img class="info__award-item-img" src="./assets/images/award04.png" alt="Best Game Changer 어워즈">
-                            <p class="info__award-item-name">Best Game Changer</p>
+                            <div class="info__award-img-box">
+                                <img class="info__award-img" src="./assets/images/award04.png" alt="Best Game Changer 어워즈">
+                            </div>    
+                                <p class="info__award-name">Best Game Changer</p>
                         </li>
                         <li class="info__award-item">
-                            <img class="info__award-item-img" src="./assets/images/award05.png" alt="Safety in Beauty 어워즈">
-                            <p class="info__award-item-name">Safety in Beauty</p>
+                            <div class="info__award-img-box">
+                                <img class="info__award-img" src="./assets/images/award05.png" alt="Safety in Beauty 어워즈">
+                            </div> 
+                            <p class="info__award-name">Safety in Beauty</p>
                         </li>
                     </ul>
                 </div>
@@ -177,7 +213,7 @@
             <div class="func__contents">
                 <h3 class="func__title">
                     <span class="text-fill">상위 1.5%만 을 위해 </span>
-                    <span class="text-fill">차별화된 <span class="func__title-line"></span>1.5mm의 기적</span>
+                    <span class="text-fill">차별화된 <span class="func__title-line pc-only"></span>1.5mm의 기적</span>
                 </h3>
                 <p class="func__desc">소프웨이브 시술은 쿨링 시스템과 에너지 전달 피드백 기능이 탑재돼 있어 표피 손상을 방지하고, 보다 얇은 부위에 균일한 에너지를 골고루 전달하기 때문에 볼 패임 현상을 최소화합니다.</p>
                 <div class="func__list-wrap">
@@ -212,7 +248,7 @@
                 </div>
             </div>
             <div class="solution__text-wrap">
-                <ul class="solution__merit">
+                <ul class="solution__merit pc-only">
                     <li class="solution__merit-item">차별화되는 7개의 트랜듀서로 조직에 강력한 에너지 전달</li>
                     <li class="solution__merit-item">액체가 아닌 고체 에너자이저 모듈로 부작용 걱정 없이 안전하게!</li>
                     <li class="solution__merit-item">높은 강도, 12MHz의 강력한 원통형 에너지를 균일하게!</li>
@@ -232,7 +268,7 @@
         </section>
         <section id="effect" class="sec effect">
             <div class="effect__inner">
-                <div class="effect__contents">
+                <div class="effect__list-wrap">
                     <ul class="effect__list">
                         <li class="effect__item">
                             <div class="effect__item-logo">
@@ -248,7 +284,8 @@
                                 <img src="./assets/images/logo.png" alt="로고">
                             </div>
                             <p class="effect__item-text">
-                                <span><span>특히 시술 후 조직 검사 결과 <strong>진피 중간층의 콜라겐</strong>이 증가했으며,</span></span>
+                                <span><span>특히 시술 후 조직 검사 결과 </span></span>
+                                <span><span><strong>진피 중간층의 콜라겐</strong>이 증가했으며,</span></span>
                                 <span><span><strong>진피의 탄력섬유(elastic fiber)가</strong></span></span>
                                 <span><span><strong>탄탄하게 재정렬(Staightening)</strong>된 것을 확인했다."</span></span>
                             </p>
@@ -329,7 +366,7 @@
                         </h3>
                         <p class="contact__text">지금부터 소프웨이브™ Sofwave™ 지금 바로 경험해보세요.</p>
                     </div>
-                    <div class="contact__img-box">
+                    <div class="contact__img-box pc-only">
                         <img src="./assets/images/s7_img.jpg" alt="CONTACT 이미지">
                     </div>
                     <a class="contact__btn" href="#">
@@ -389,7 +426,7 @@
                 </div>
             </div>
         </section>
-        <section id="sns" class="sns sec">
+        <section id="sns" class="sec sns">
             <div class="sns__inner">
                 <h2 class="sns__title">SNS</h2>
                 <div class="sns__swiper swiper">

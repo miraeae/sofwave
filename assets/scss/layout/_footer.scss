@@ -10,10 +10,22 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-end;
+
+        @include tablet {
+            flex-direction: column;
+            padding: 60px 0;
+        }
     }
 
     &__logo{
         width: 25%;
+
+        @include tablet {
+            width:100%;
+            img{
+                max-width: 140px;
+            }
+        }
     }
 
     &__info{
@@ -21,11 +33,22 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
+        @include tablet {
+            grid-template-columns: 1fr;
+            margin-top: 1.5625em;
+            width: 100%;
+        }
+
         &-item{
             display: flex;
             font-size: 1.13rem;
             line-height: 1.3;
-            margin-bottom: 25px;
+            margin-bottom: 1.25rem;
+
+            @include tablet {
+                margin-bottom: 1rem;
+                font-size: 1rem;
+            }
 
             &:nth-child(2) {
                 order:3;
@@ -40,7 +63,11 @@
             h6{
                 font-weight: 500;
                 color: #bbbbbb;
-                min-width: 100px;
+                width: 100px;
+
+                @include mobile {
+                    width:56px;
+                }
             }
 
             p{
@@ -54,8 +81,16 @@
         width: 170px;
         display: flex;
         align-items: center;
+        align-self: flex-end;
         border: 1px solid #5a5a5a;
         cursor: pointer;
+
+        @include tablet {
+            justify-items: flex-end;
+        }
+        @include mobile {
+            margin-top: 20px;
+        }
 
         &:before{
             content: "";

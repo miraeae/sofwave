@@ -1,14 +1,23 @@
 .sec{
-    & > [class$=__inner] {
+    & > [class$=__inner],
+    & > [class*=__contents] {
         position: relative;
         max-width: 1440px;
         margin:0 auto;
-        width: 95%;
+        width:95%;
     }
 
     h2{
         font-size: 3.75rem;
         font-weight: 800;
+
+        @include tablet {
+            font-size: 3.6667em;
+        }
+
+        @include tablet {
+            font-size: 3.1429rem;
+        }
     }
 }
 
@@ -17,7 +26,7 @@
     top:0;
     left:0;
     width:100%;
-    height:100vh;
+    height:100svh;
     background-color: $color-black;
     display: flex;
     justify-content: center;
@@ -40,14 +49,13 @@
             width: calc(150 / 1920* 100vw);
             min-width: 30px;
             visibility: hidden;
-            img {
-                width:100%;
-            }
         }
         &-text{
             position: absolute;
             right:0;
             opacity: 0;
+            width: calc(696 / 1920* 100vw);
+            min-width: 140px;
         }
     }
 
@@ -70,17 +78,15 @@
             height:100%;
             background-color: $color-black;
         }
-
     }
 }
 
 
 .hero{
     background-color: $color-navy;
-    height: 100vh;
+    height: 100svh;
 
     &__contents{
-        position: relative;
         padding-top: max(13.5vh, 65px);
         padding-bottom: 2.5rem;
         height: 100%;
@@ -90,9 +96,20 @@
         align-items: center;
         z-index: 2;
         visibility: hidden;
+        max-width: 95% !important;
+
+        @include tablet {
+            padding:0;
+            justify-content: center;
+        }
+
+        @include mobile {
+            padding-bottom: 20vh;
+        }
     }
 
     &__title-wrap{
+        position: relative;
         font-size:1.5625rem;
         font-weight: 500;
 
@@ -100,16 +117,25 @@
             font-size: 1.25rem;
         }
 
+        @include tablet {
+            font-size: 1rem;
+        }
+
         .hero__badge{
             padding-left: 17vw;
         }
+        
         .hero__title{
             font-size:19.1vw;
             font-weight: 900;
             line-height: 0.74;
             letter-spacing: -0.025em;
-            padding: 23px 0;
+            padding: 1.375rem 0;
 
+            @include tablet {
+                padding: 1rem 0;
+            }
+    
             span{
                 font-size:0.6em;
                 vertical-align: top;
@@ -117,22 +143,36 @@
             }
         }
 
+        .hero__desc{
+            @include mobile {
+                margin-left: 0.5rem;
+            }
+        }
+
         .hero__img-wrap{
             font-size: 1.0625rem;
             position: absolute;
-            top: 34vh;
-            right: 16vw;
+            top: 21vh;
+            right: 11vw;
             
             @include laptop {
                 font-size:1rem;
             }
+
+            @include tablet {
+                top: 23vh;
+                right: 0;
+            }
+            @include mobile {
+                top: 20vh;
+            }
     
             .hero__img-box{
                 overflow: hidden;
-                // width:350px;
-                // height:300px;
                 width: calc(350 / 1920* 100vw);
                 height: calc(300 / 1920* 100vw);
+                min-width: 140px;
+                min-height: 116px;
 
                 img{
                     width:100%;
@@ -144,6 +184,8 @@
             .hero__img-desc{
                 margin-top: 5px;
                 line-height: 1.3;
+                width: calc(350 / 1920* 100vw);
+                min-width: 140px;
 
                 @include laptop {
                     font-size: 0.875rem;
@@ -162,9 +204,29 @@
         font-size: 3rem;
         max-width: 450px;
         align-self: flex-start;
-        margin-left: 10%;
+        margin-left: 8vw;
         line-height: 1.2;
         letter-spacing: -0.025em;
+
+        @include laptop {
+            max-width: 380px;
+            font-size: 2.5rem;
+            margin-left: 2.5rem;
+        }
+
+        @include tablet {
+            max-width: 250px;
+            font-size: 2rem;
+            margin-top: max(3vh, 40px);
+            margin-left: 1.25rem;
+        }
+
+        @include mobile {
+            max-width: 140px;
+            font-size:1.0714rem;
+            margin-top: 1.5rem;
+            margin-left: 0.8rem;
+        }
     }
 
     &__scroll{
@@ -172,12 +234,21 @@
         bottom: 2.5rem;
         text-align: center;
 
+        @include mobile {
+            bottom: 1.5rem;
+        }
+
         &-ico {
             display: inline-block;
             padding: 1.25rem 0.625rem;
             border-radius: 30px;
             border: 1px solid #92979b;
             margin-bottom: 0.4rem;
+
+            @include mobile {
+                padding: 1rem 0.61rem;
+                margin-bottom: 0;
+            }
 
             span{
                 display: block;
@@ -207,14 +278,25 @@
 
     &__promotion-btn{
         position: absolute;
-        right:12vw;
+        right:10vw;
         bottom: 2.5rem;
         display: flex;
         @include circleBtn;
 
         @include laptop {
-            right: 5vw;
+            right: 0.5rem;
+            bottom: 1.25rem;
         }
+
+        span {
+            @include tablet {
+                font-size: 14px;
+            }
+            @include mobile{
+                font-size: 12px;
+            }
+        }
+        
     }
 
     &__video-bg{
@@ -232,6 +314,10 @@
             top:0;
         }
 
+        @include laptop {
+            top:0;
+        }
+
         video {
             width: 100%;
             height:100%;
@@ -241,9 +327,7 @@
 }
 
 
-
 .info {
-
     &__bg{
         height:100vh;
         position: sticky;
@@ -257,37 +341,17 @@
         }
     }
 
-    // Common
-    &__row{
-        position: relative;
+    &__contents{
         z-index: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
 
-        &-title{
-            font-size: 3rem;
-            max-width: 940px;
-        }
-
-        &-text{
-            margin-top: 3.75rem;
-            font-size: 1.125rem;
-            color: #a1a1a1;
-            max-width: 840px;
-
-            &--info{
-                font-size: 1rem;
-                line-height: 1.8;
-                margin-top: 6.875rem;
-            }
-        }  
-
         &--top{
             padding-bottom: 50vh;
 
-            .info__row-title{
+            .info__title{
                 font-weight: 200;
             strong{
                 font-weight: 600;
@@ -298,40 +362,108 @@
         &--btm{
             padding-bottom: 3.75rem;
 
-            .info__row-title{
+            .info__title{
                 position: relative;
                 line-height: 1.8;
                 padding-bottom: 2.5rem;
 
-                &-line{
-                    position: absolute;
-                    bottom: 0;
-                    right: 3%;
-                    // overflow: hidden;
-                    // width: 320px;
-                    // height:37px;
-    
-                    svg{
-                        // position: absolute;
-                        // top:0;
-                        // left:0;
-                        width:320px;
-                        height:100%;
-                        
-                        line{
-                            fill: none;
-                            stroke: $color-white;
-                            stroke-linecap: round;
-                            stroke-miterlimit: 10;
-                            stroke-width: 3px;
-                        }
-                    }
+                @include mobile {
+                    padding-bottom: 1.5rem;
                 }
             }
         }
     }
 
+    &__title{
+        font-size: 3rem;
+        max-width: 940px;
+
+        @include laptop {
+            font-size: 2.5rem;
+            max-width: 800px;
+        }
+
+        @include tablet {
+            font-size: 2rem;
+            max-width: 580px;
+        }
+
+        @include mobile {
+            font-size: 1.35em;
+        }
+
+        &-line{
+            position: absolute;
+            bottom: 0;
+            right: 3%;
+
+            @include mobile {
+                right:0;
+            }
+
+            svg{
+                width:320px;
+                height:100%;
+
+                @include tablet {
+                    width: 180px;
+                }
+
+                @include mobile{
+                    width: 100px;
+                }
+                
+                line{
+                    fill: none;
+                    stroke: $color-white;
+                    stroke-linecap: round;
+                    stroke-miterlimit: 10;
+                    stroke-width: 3px;
+                }
+            }
+        }
+    }
+
+    &__text{
+        margin-top: 3.75rem;
+        font-size: 1.125rem;
+        color: #a1a1a1;
+        max-width: 840px;
+
+        @include laptop {
+            max-width: 400px;
+        }
+
+        @include tablet {
+            font-size: 1rem;
+        }
+
+        @include tablet {
+            margin-top: 1.7rem;
+        }
+
+        &--info{
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-top: 6.875rem;
+
+            @include laptop {
+                max-width: 840px;
+            }
+
+            @include tablet {
+                max-width: 510px;
+                margin-top: 4.6667rem;
+            }
+
+            @include tablet {
+                font-size: 10px;
+            }
+        }
+    }  
+
     &__award{
+        width: 100%;
         margin-top: 5rem;
 
         &-title{
@@ -340,23 +472,51 @@
         }
 
         &-list{
-            width: 850px;
+            max-width: 850px;
             display: flex;
             justify-content: space-between;
             margin: 0 auto;
             margin-top: 2.875rem;
+            gap: 5rem;
+            width:100%;
+            
+            @include tablet {
+                display: block;
+                font-size:0;
+            }
         }
 
         &-item{
-            &-name{
+            text-align: center;
+
+            @include tablet {
+                display: inline-block;
+                width: 33.3%;
+                font-size: 1rem;
+                margin-bottom: 2rem;
+                vertical-align: top;
+            }
+
+            .info__award-img-box{
+                @include mobile {
+                    padding: 0 18%;
+                }
+            }
+
+            .info__award-name{
                 line-height: 1.4;
                 color: #7e7e7e;
                 max-width: 100px;
                 margin-top: 1.25rem;
+                display: inline-block;
+
+                @include mobile {
+                    margin-top: 0.5rem;
+                }
             }
 
             &:nth-child(3) {
-                .info__award-item-name{
+                .info__award-name{
                     max-width:120px;
                 }
             }
@@ -385,10 +545,6 @@
     }
 
     &__contents{
-        position: relative;
-        max-width:1440px;
-        padding: 0 2.5rem;
-        margin:0 auto;
         padding-bottom: 10rem;
         z-index: 2;
         display: flex;
@@ -396,20 +552,42 @@
         justify-content: center;
         align-items: flex-end;
 
+        @include tablet {
+            padding-bottom: 15rem;
+        }
+
         .func__title{
             font-size: 4.375rem;
             margin-bottom: 5rem;
             text-align: right;
             font-weight: 200;
 
+            @include laptop {
+                font-size: 3.75rem;
+            }
+            @include tablet {
+                margin-bottom: 2.5rem;
+            }
+            @include mobile {
+                font-size: 2.5em;
+            }
+
             > span:first-child {
                 display: block;
                 padding-right: 25rem;
+
+                @include tablet {
+                    padding-right: 0;
+                }
             }
 
             > span:last-child{
                 font-weight: 600;
                 padding-right: 2.125rem;
+
+                @include tablet {
+                    padding-right: 0;
+                }
             }
 
             &-line{
@@ -425,6 +603,14 @@
             font-size: 1.125rem;
             color: #c6d0d4;
             max-width: 690px;
+
+            @include laptop {
+                font-size: 1rem;
+            }
+            @include tablet {
+                text-align: right;
+                max-width: 420px;
+            }
         }
 
         .func__list-wrap{
@@ -433,11 +619,27 @@
             width: 100%;
             margin: 6.25rem auto 0;
 
+            @include laptop {
+                max-width: 100%;
+                padding: 0 1.875rem;
+            }
+            @include mobile {
+                padding: 0 2.5%;
+            }
+
             .func__list-title{
                 font-size: 1.125rem;
                 color: #ff7e00;
                 font-weight: 500;
                 margin-bottom: 1.875rem;
+
+                @include tablet {
+                    margin-bottom:1.2rem;
+                }
+
+                @include mobile {
+                    margin-bottom:0.8rem;
+                }
             }
 
             .func__list{
@@ -445,12 +647,31 @@
                 justify-content: space-between;
                 align-items: center;
 
+                @include tablet {
+                    justify-content: flex-start;
+                    gap: 1.2rem;
+                    flex-wrap: wrap;
+                }
+                @include mobile {
+                    gap: 0.8rem;
+                }
+
                 .func__item{
                     font-size: 1.375rem;
                     font-weight: 500;
                     padding:0.5rem 2.8125rem;
                     border: 1px solid $color-white;
                     border-radius: 3.125rem;
+
+                    @include laptop {
+                        font-size: 1.125rem;
+                        padding:0.5rem 2rem;
+                    }
+
+                    @include tablet {
+                        font-size: 1rem;
+                        padding: 0.4rem 1.5rem;
+                    }
                 }
             }
         }
@@ -460,6 +681,12 @@
 .solution {
     position: relative;
     background-color: $color-primary;
+    overflow: hidden;
+    
+    @include tablet {
+        padding-top: 6.6rem;
+        padding-bottom: 10rem;
+    }
 
     &__title-wrap{
         position: absolute;
@@ -469,14 +696,24 @@
         height:100vh;
         padding: 6vw 9.35vw;
         z-index: 2;
-        
+
+        @include tablet {
+            position: relative;
+            padding: 0 2.5%;
+            height:auto;
+        }
         
         .solution__title{
             font-size: 3.4375rem;
             font-weight: 800;
 
             @include laptop {
-                font-size: 2.8125rem;
+                font-size: 2.25rem;
+            }
+            @include mobile {
+                br{
+                    display: none;
+                }
             }
         }
     
@@ -515,6 +752,12 @@
         align-items: center;
         justify-content: center;
         z-index: 1;
+        overflow: hidden;
+
+        @include tablet {
+            position: absolute;
+            padding-top:120px;
+        }
 
         .solution__img-inner {
             position: relative;
@@ -524,13 +767,34 @@
             overflow: hidden;
             border-radius: 2.5rem;
 
+            @include tablet {
+                position: absolute;
+                width: 50vw;
+                height: 50vw;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
             .solution__img-box{
                 position: absolute;
                 top: calc(50% + (50 / 930* 100vh));
                 right: calc(50% + (50 / 1920* 100vw));
 
+                @include tablet {
+                    position: unset;
+                }
+
                 img{
                     width: calc(650 / 1920* 100vw);
+
+                    @include tablet {
+                        width: 380px;
+                    }
+                    @include tablet {
+                        width: 200px;
+                    }
                 }
             }
         }
@@ -541,6 +805,14 @@
         z-index: 3;
         padding: 100vh 9.2vw 40vh calc(50% + 10vw);
 
+        @include tablet {
+            padding: 450px 2.5% 0;
+        }
+
+        @include tablet {
+            padding-top: 300px;
+        }
+
         .solution__merit {
             &-item{
                 font-size: 2rem;
@@ -548,17 +820,47 @@
                 line-height: 1.4;
                 opacity: 0.2;
                 margin-bottom: 12.5rem;
+
+                @include laptop {
+                    font-size: 1.5rem;
+                }
             }
         }
 
         .solution__reason{
+            @include tablet {
+                max-width: 580px;
+            }
             &-title{
                 font-size:2rem;
+
+                @include laptop {
+                    font-size: 1.5rem;
+                }
+                @include tablet {
+                    font-size: 2rem;
+                }
+                @include tablet {
+                    font-size: 1.5rem;
+                }
             }
             &-desc{
                 font-size: 1.375rem;
                 line-height: 2;
                 margin-top: 0.625rem;
+
+                @include laptop {
+                    font-size: 1.125rem;
+                }
+
+                @include laptop {
+                    font-size: 1.5rem;
+                    line-height: 1.6;
+                }
+
+                @include laptop {
+                    font-size: 1.25rem;
+                }
             }
         }
     }
@@ -567,7 +869,7 @@
 
 .effect{
     position: relative;
-    background:url(../images/s4_img.jpg) no-repeat center center / cover;
+    background:url(../images/s4_img.jpg) no-repeat left top / cover;
     height: 100vh;
 
     &:before{
@@ -583,6 +885,7 @@
 
     &__inner{
         z-index: 2;
+        height: 100%;
     }
 
     &__item{
@@ -604,7 +907,19 @@
             }
             img{
                 display: block;
-                width: 100%;
+
+                @include mobile {
+                    width:130px;
+                }
+            }
+
+            &--big{
+                @include mobile {
+                    max-width:80%;
+                    img{
+                        width: 100%;
+                    }
+                }
             }
         }
 
@@ -613,6 +928,13 @@
             font-weight: 200;
             margin-top: 1.5625rem;
             overflow: hidden;
+
+            @include laptop {
+                font-size: 2.375rem;
+            }
+            @include mobile {
+                font-size: 1.5em;
+            }
 
             > span {
                 overflow: hidden;
@@ -660,6 +982,10 @@
     height:100vh;
     background-color: $color-navy;
 
+    @include tablet {
+        height: auto;
+    }
+
     &__marquee{
         position: absolute;
         display: flex;
@@ -669,17 +995,29 @@
         &--top{
             top:9vh;
             z-index: 3;
+            @include tablet {
+                top: 3%;
+            }
         }
 
         &--btm{
             bottom:16vh;
             animation-direction:reverse;
             z-index: 1;
+
+            @include tablet {
+                bottom: unset;
+                top: 40%;
+            }
         }
 
         &-text{
             flex-shrink: 0;
             font-size: 8vw;
+
+            @include tablet {
+                font-size: 12vw;
+            }
 
             &--line{
                 -webkit-text-stroke: 1px $color-white;
@@ -694,9 +1032,17 @@
         z-index: 2;
         height:100%;
 
+        @include tablet {
+            width:80%;
+        }
+
         img {
+            display: block;
             height:100%;
-            object-fit: contain;
+            object-fit: cover;
+            @include tablet {
+                width:100%;
+            }
         }
     }
 
@@ -710,6 +1056,15 @@
         border-radius: 1.5625rem;
         overflow: hidden;
 
+        @include tablet {
+            position: relative;
+            width:100%;
+            height:100%;
+            border-radius: 0;
+            right:unset;
+            bottom:unset;
+        }
+
         video{
             width:100%;
             height:100%;
@@ -720,25 +1075,51 @@
 .contact{
     &__inner{
         padding-top: 15rem;
+
+        @include mobile {
+            padding-top: 11rem;
+        }
     }
 
     &__row{
         position: relative;
         display: flex;
         align-items: center;
+        @include tablet {
+            flex-direction: column;
+        }
     }
 
     &__text-box{
         width: calc(100% - 480px);
 
+        @include tablet {
+            width: 100%;
+            text-align: center;
+        }
+
         .contact__title{
             font-size: 7.5rem;
-            margin-bottom: 4.6875rem;
+            margin-bottom: 4rem;
             letter-spacing: -0.025em;
             line-height: 1;
 
             @include laptop {
                 font-size: 5.625rem;
+                margin-bottom: 3.5rem;
+            }
+
+            @include tablet {
+                display: inline-block;
+                font-size: 4em;
+                max-width: 400px;
+                margin-bottom: 2rem;
+            }
+
+            @include mobile {
+                font-size: 2.7143em;
+                max-width: 300px;
+                margin-bottom: 1.8rem;
             }
 
             .font-serif{
@@ -748,6 +1129,10 @@
 
         .contact__text{
             font-size: 1.25rem;
+
+            @include tablet {
+                font-size: 1rem;
+            }
         }
     }
 
@@ -767,6 +1152,24 @@
         @include circleBtn(163px);
         top: 17.75rem;
         right: 7.5rem;
+
+        @include tablet {
+            position:unset;
+            width: 140px;
+            height:140px;
+            margin-top: 3rem;
+        }
+
+        @include mobile {
+            width:120px;
+            height:120px;
+        }
+
+        span{
+            @include tablet {
+                font-size: 1rem;
+            }
+        }
     }
 
     &__search {
@@ -775,15 +1178,28 @@
         justify-content: center;
         align-items: stretch;
 
+        @include tablet {
+            margin-top: 4rem;
+        }
+
+        @include mobile{
+            margin-top: 3rem;
+        }
+
         &-box{
             display: flex;
             height: 76px;
             line-height: 70px;
             max-width: 920px;
-            width: 100%;
+            width: calc(100% - 86px);
             border: 3px solid $color-primary;
             border-radius: 10px;
             background-color: $color-white;
+
+            @include mobile {
+                height:45px;
+                line-height: 42px;
+            }
         }
 
         &-filter{
@@ -793,6 +1209,11 @@
             width: 150px;
             height: 100%;
             text-align: center;
+
+            @include mobile {
+                width:80px;
+                font-size: 12px;
+            }
 
             &:before{
                 content: "";
@@ -815,6 +1236,10 @@
                 border-top: 7px solid #c0c0c0;
                 transform: translateY(-2px);
                 margin-left: 0.9375rem;
+                
+                @include mobile {
+                    margin-left: 5px;;
+                }
             }
         }
 
@@ -825,6 +1250,11 @@
             color: $color-black;
             padding-left: 2.5rem;
             width: calc(100% - 150px);
+
+            @include mobile {
+                font-size:1rem;
+                padding-left: 1rem;
+            }
         }
 
         &-ico{
@@ -834,7 +1264,14 @@
             justify-content: center;
             background-color: $color-primary;
             border-radius: 10px;
-            margin-left: 0.9375rem;
+            margin-left: 10px;
+
+            @include mobile {
+                width:45px;
+                img {
+                    width: 20px;
+                }
+            }
         }
     }
 }
@@ -845,6 +1282,10 @@
     &__inner{
         padding-top: 11.875rem;
         padding-bottom: 8.75rem;
+
+        @include tablet {
+            padding-bottom: 6.6667em;
+        }
     }
 
     &__board{
@@ -856,6 +1297,11 @@
 
         @include laptop {
             width: 100%;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+        @include mobile{
+            gap: 2.8rem;
         }
 
         &-list{
@@ -889,6 +1335,10 @@
                 margin-bottom: 0.9375rem;
                 line-height: 1.2;
                 @extend %ellipsis;
+
+                @include mobile {
+                    font-size: 1.1429rem;
+                }
             }
 
             .media__board-text{
@@ -915,7 +1365,7 @@
             width:640px;
 
             @include laptop {
-                display: none;
+                width: 100%;
             }
 
             &-box{
@@ -923,6 +1373,10 @@
                 height:0;
                 padding-bottom: calc(80%);
                 overflow: hidden;
+
+                @include laptop {
+                    display: none;
+                }
 
                 img{
                     position: absolute;
@@ -937,6 +1391,11 @@
 
             .media__board-btn{
                 margin-top: 3.5rem;
+
+                @include laptop {
+                    text-align: right;
+                    margin-top: 0;
+                }
 
                 a{
                     font-size: 1.25rem;
@@ -954,6 +1413,10 @@
 .sns{
     padding-top: 8.75rem;
     overflow: hidden;
+
+    @include tablet {
+        padding-top: 6.6667em;
+    }
 
     &__title{
         margin-bottom: 4.375rem;
@@ -980,6 +1443,9 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        @include mobile {
+            font-size: 1rem;
+        }
     }
 }
 
@@ -996,6 +1462,10 @@
             flex-shrink: 0;
             line-height: 1;
             font-weight: 800;
+
+            @include tablet {
+                font-size: 6.6667em;
+            }
         }
     }
 
@@ -1003,12 +1473,18 @@
         font-size: 1.25rem;
         font-weight: 500;
         margin-top: 4.375rem;
+
+        @include tablet {
+            font-size: 1.0667em;
+            color: #777;
+            margin-top: 2rem;
+        }
     }
 
     .top-btn{
         position: absolute;
         right: 0;
-        top: 230px;
+        top: 12vw;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1021,6 +1497,13 @@
         animation: bounce infinite forwards 3s;
         transition: all 0.3s;
         filter: grayscale(100%) brightness(400%);
+
+        @include tablet {
+            top: 125px;
+        }
+        @include mobile{
+            top: 200px;
+        }
 
         &:hover{
             filter: grayscale(0) brightness(100%);
@@ -1036,6 +1519,11 @@
             height: 80px;
         }
 
+        img{
+            @include tablet {
+                width: 12px;
+            }
+        }
         span{
             margin-top: 0.375rem;
         }

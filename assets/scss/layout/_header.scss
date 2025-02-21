@@ -9,10 +9,19 @@
     padding-left: 2.4vw;
     padding-right: 6.8vw;
     z-index: 999;
+
+    @include tablet {
+        height: 60px;
+        padding:0 1.25rem;
+    }
 }
 
 .logo{
     width:11.625rem;
+
+    @include tablet {
+        width: 9rem;
+    }
 }
 
 .gnb{
@@ -31,7 +40,7 @@
             font-weight: 500;
         }
 
-        .gnb__sub{
+        .gnb__sub-list{
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -46,7 +55,7 @@
             opacity: 0;
             @include prefix(transition, all 0.5s);
 
-            &-item{
+            .gnb__sub-item{
                 a {
                     display: block;
                     padding: 0.875rem 0;
@@ -61,10 +70,114 @@
         }
 
         &:hover {
-            .gnb__sub{
+            .gnb__sub-list{
                 visibility: visible;
                 opacity: 1;
             }
         }
     }
 }
+
+.gnb-trigger {
+    position: relative;
+    justify-self: end;
+    width: 28px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 100;
+    transition: opacity 0.25s ease;
+
+    &__bar {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        background: $color-white;
+        width: 100%;
+        height: 2px;
+        transition: all 0.35s ease;
+        &:nth-child(2) {
+            top: 15px;
+        }
+    }
+
+    &.active span{
+        background: $color-white !important;
+        &:nth-child(1) {
+            transform: translateY(5px) translateX(0) rotate(45deg);
+        }
+        &:nth-child(2) {
+            transform: translateY(-5px) translateX(0) rotate(-45deg);
+        }
+    }
+}
+
+.gnb-mobile {
+    position: fixed;
+    top:0;
+    right:0;
+    width: 14.8em;
+    height: 100vh;
+    background-color: $color-black;
+    padding: 0 2em;
+    padding-top: 6em;
+
+    &__item{
+        position: relative;
+        margin-bottom: 1.2em;
+
+        > a{
+            position: relative;
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+
+            &:before{
+                content: '';
+                position: absolute;
+                top:50%;
+                margin-top:-10px;
+                right:0;
+                width: 10px;
+                height: 10px;
+                border: 1px solid $color-white;
+                border-top: none;
+                border-right: none;
+                transform: rotate(-45deg);
+                transition: transform 0.3s;
+            }
+
+            &.active{
+                &:before{
+                    transform: rotate(135deg);
+                    margin-top: -5px;
+                }
+            }
+        }
+    }
+
+    &__sub-list{
+        margin-top: 0.4rem;
+        display: none;
+
+        .gnb-mobile__sub-item{
+            a{
+                font-size: 0.9333em;
+                padding-left: 10px;
+                color: #bfbfbf;
+                line-height: 2;
+            }
+        }
+    }
+
+    &__overlay{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: -1;
+        display:none;
+    }
+}
+
