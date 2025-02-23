@@ -681,7 +681,6 @@
 .solution {
     position: relative;
     background-color: $color-primary;
-    overflow: hidden;
     
     @include tablet {
         padding-top: 6.6rem;
@@ -788,6 +787,7 @@
 
                 img{
                     width: calc(650 / 1920* 100vw);
+                    max-width: unset;
 
                     @include tablet {
                         width: 380px;

@@ -1224,7 +1224,6 @@ html::-webkit-scrollbar-thumb {
 .solution {
   position: relative;
   background-color: rgb(0, 204, 255);
-  overflow: hidden;
 }
 @media (max-width: 1024px) {
   .solution {
@@ -1335,6 +1334,7 @@ html::-webkit-scrollbar-thumb {
 }
 .solution__img-wrap .solution__img-inner .solution__img-box img {
   width: 33.8541666667vw;
+  max-width: unset;
 }
 @media (max-width: 1024px) {
   .solution__img-wrap .solution__img-inner .solution__img-box img {
