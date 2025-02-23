@@ -1,6 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
+    // 쿠키 저장
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+    }
+
+    // 쿠키 가져오기
+    function getCookie(name) {
+        const cookieArray = document.cookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            const cookie = cookieArray[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                return cookie.substring((name + '=').length);
+            }
+        }
+        return null;
+    }
+
+    const hasVisited = getCookie("visited");
+    //console.log(hasVisited);
+
+    if (hasVisited) {
+        introEnable = false;
+        //console.log("introEnable false");
+    } else {
+        introEnable = true;
+        setCookie("visited", "true", 1);
+        //console.log("introEnable true");
+    }
+
     // Disable scrolling until the intro ends
     lenis.stop();
 
@@ -72,40 +103,7 @@ function intro() {
         }
     });
 
-
-    // Cookie
-    // 쿠키 저장
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
-    }
-
-    // 쿠키 가져오기
-    function getCookie(name) {
-        const cookieArray = document.cookie.split(';');
-        for (let i = 0; i < cookieArray.length; i++) {
-            const cookie = cookieArray[i].trim();
-            if (cookie.startsWith(name + '=')) {
-                return cookie.substring((name + '=').length);
-            }
-        }
-        return null;
-    }
-
     // 인트로 봤는지 확인
-    const hasVisited = getCookie("visited");
-    //console.log(hasVisited);
-
-    if (hasVisited) {
-        introEnable = false;
-        //console.log("introEnable false");
-    } else {
-        introEnable = true;
-        setCookie("visited", "true", 1);
-        //console.log("introEnable true");
-    }
-
     // 이미 인트로를 봤다면 바로 Hero 시작
     if(introEnable == false) {
         intro.remove();
